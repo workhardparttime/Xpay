@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            margin: auto;
+            color: black;
+        }
+        .countdown {
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please wait while we redirect you...</p>
+
+        <!-- Countdown Timer -->
+        <p class="countdown" id="countdown">Redirecting in <span id="timer">30</span> seconds...</p>
+    </div>
+
+    <script>
+        const telegramLink = "https://lihi.cc/D4Hhp?utm_medium=paid&utm_source=ig&utm_id=120217769885970616&utm_content=120217770238700616&utm_term=120217770238440616&utm_campaign=120217769885970616&fbclid=PAY2xjawIrnJtleHRuA2FlbQIxMAABpgN9lWa2V038fzZYpBZPaiXaW9ed45rNkzDa0-MqPYyHkRa1oJzJWVfJtg_aem_WUUqVnLQOq2FkzVlYSNgVA";
+
+        setTimeout(startCountdown, 3000); // पेज लोड होने के 3 सेकंड बाद काउंटडाउन स्टार्ट होगा
+
+        function startCountdown() {
+            document.getElementById("countdown").style.display = "block";
+
+            let timeLeft = 30;
+            let timer = document.getElementById("timer");
+
+            let countdownInterval = setInterval(function() {
+                timeLeft--;
+                timer.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = telegramLink;
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
