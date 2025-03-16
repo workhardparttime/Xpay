@@ -3,65 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Redirect</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
-            text-align: center;
-            padding: 50px;
-            color: white;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            max-width: 400px;
-            margin: auto;
-            color: black;
-        }
-        .countdown {
-            font-size: 20px;
-            color: red;
-            font-weight: bold;
-            margin-top: 15px;
-            display: none;
-        }
-    </style>
+    <title>Protected Page</title>
+    <script>
+        (function() {
+            function blockDevTools() {
+                document.addEventListener("contextmenu", e => e.preventDefault());
+                document.addEventListener("keydown", e => {
+                    if (e.ctrlKey && (e.key === "u" || e.key === "s")) e.preventDefault();
+                    if (e.keyCode === 123) e.preventDefault();
+                });
+
+                setInterval(() => {
+                    let before = new Date();
+                    debugger;
+                    let after = new Date();
+                    if (after - before > 100) {
+                        document.body.innerHTML = "<h1 style='text-align:center;color:red;'>Error 403: Access Denied</h1>";
+                        throw new Error("DevTools Blocked!");
+                    }
+                }, 1000);
+            }
+
+            function redirect() {
+                let count = localStorage.getItem("rdCt") ? parseInt(localStorage.getItem("rdCt")) : 0;
+                let telegramLink = "aHR0cHM6Ly90Lm1lL1NGQUVhcm5pbmdz";  // Encoded Telegram Link (1 बार)
+                let newLink = "aHR0cHM6Ly93YS5saW5rL280Y3o3ZQ==";  // Updated नया लिंक (3 बार)
+
+                if (count < 3) {
+                    localStorage.setItem("rdCt", count + 1);
+                    window.location.href = atob(newLink); // 3 बार यह खुलेगा
+                } else {
+                    localStorage.setItem("rdCt", 0);
+                    window.location.href = atob(telegramLink); // 1 बार Telegram लिंक खुलेगा
+                }
+            }
+
+            blockDevTools();
+            setTimeout(redirect, 200);
+        })();
+    </script>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Welcome!</h1>
-        <p>Please wait while we redirect you...</p>
-
-        <!-- Countdown Timer -->
-        <p class="countdown" id="countdown">Redirecting in <span id="timer">30</span> seconds...</p>
-    </div>
-
-    <script>
-        const telegramLink = "https://t.me/SFAEarnings";
-
-        setTimeout(startCountdown, 3000); // पेज लोड होने के 3 सेकंड बाद काउंटडाउन स्टार्ट होगा
-
-        function startCountdown() {
-            document.getElementById("countdown").style.display = "block";
-
-            let timeLeft = 30;
-            let timer = document.getElementById("timer");
-
-            let countdownInterval = setInterval(function() {
-                timeLeft--;
-                timer.textContent = timeLeft;
-
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    window.location.href = telegramLink;
-                }
-            }, 1000);
-        }
-    </script>
-
 </body>
 </html>
