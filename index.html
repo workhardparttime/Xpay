@@ -21,6 +21,11 @@
             margin: auto;
             color: black;
         }
+        #timer {
+            font-size: 24px;
+            margin-top: 20px;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -28,10 +33,10 @@
     <div class="container">
         <h1>Welcome!</h1>
         <p>Please wait while we redirect you...</p>
+        <div id="timer">Redirecting in: 60 seconds</div>
     </div>
 
     <script>
-        // WhatsApp Numbers Array
         const numbers = [
             "+919898322490",
             "+918003835362",
@@ -44,13 +49,20 @@
             "+916297285344"
         ];
 
-        // Random Number Select
         const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+        let timeLeft = 60;
 
-        // Redirect After 1 Minute (60 seconds)
-        setTimeout(function() {
-            window.location.href = "https://wa.me/" + randomNumber;
-        }, 60000); // 60000 milliseconds = 60 seconds = 1 minute
+        const timerElement = document.getElementById("timer");
+
+        const countdown = setInterval(function() {
+            timeLeft--;
+            timerElement.textContent = "Redirecting in: " + timeLeft + " seconds";
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = "https://wa.me/" + randomNumber;
+            }
+        }, 1000);
     </script>
 
 </body>
