@@ -33,25 +33,11 @@
     <div class="container">
         <h1>Welcome!</h1>
         <p>Please wait while we redirect you...</p>
-        <div id="timer">Redirecting in: 60 seconds</div>
+        <div id="timer">Redirecting in: 3 seconds</div>
     </div>
 
     <script>
-        const numbers = [
-            "+919898322490",
-            "+918003835362",
-            "+919370712792",
-            "+918780020577",
-            "+919765428119",
-            "+918292790626",
-            "+919840207928",
-            "+919450827158",
-            "+916297285344"
-        ];
-
-        const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
-        let timeLeft = 60;
-
+        let timeLeft = 3;
         const timerElement = document.getElementById("timer");
 
         const countdown = setInterval(function() {
@@ -60,7 +46,7 @@
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                window.location.href = "https://wa.me/" + randomNumber;
+                window.location.href = "https://t.me/SFAEarnings";
             }
         }, 1000);
     </script>
