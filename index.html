@@ -4,18 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Redirect</title>
-    <script type="text/javascript">
-        // Redirect immediately when the page loads
-        window.onload = function() {
-            window.location.href = "https://t.me/SFAEarnings"; // Change this to the link you want
-        };
-
-         // window.onload = function() {
-            // window.location.href = "workfromathomeredirect"; // Change this to the link you want
-        // }; 
-    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            margin: auto;
+            color: black;
+        }
+    </style>
 </head>
 <body>
-    <!-- No content in the body -->
+
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please wait while we redirect you...</p>
+    </div>
+
+    <script>
+        // WhatsApp Numbers Array
+        const numbers = [
+            "+919898322490",
+            "+918003835362",
+            "+919370712792",
+            "+918780020577",
+            "+919765428119",
+            "+918292790626",
+            "+919840207928",
+            "+919450827158",
+            "+916297285344"
+        ];
+
+        // Random Number Select
+        const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+
+        // Redirect After 1 Minute (60 seconds)
+        setTimeout(function() {
+            window.location.href = "https://wa.me/" + randomNumber;
+        }, 60000); // 60000 milliseconds = 60 seconds = 1 minute
+    </script>
+
 </body>
 </html>
