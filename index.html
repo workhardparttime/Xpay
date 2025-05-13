@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Redirecting...</title>
-    <script>
-        const telegramUsernames = [
-            "Ayeshas786",
-            "HRNIKKIHT",
-            "Lina791913",
-            "zxc11827",
-            "coolpay8802",
-            "Coolpay121212",
-            "Leila72745",
-            "bubblybubsbubbles"
-        ];
-
-        function redirectToTelegramUser() {
-            let savedUser = localStorage.getItem('selectedTelegramUser');
-
-            if (!savedUser) {
-                let randomIndex = Math.floor(Math.random() * telegramUsernames.length);
-                savedUser = telegramUsernames[randomIndex];
-                localStorage.setItem('selectedTelegramUser', savedUser);
-            }
-
-            window.location.href = "https://t.me/" + savedUser;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Redirect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            text-align: center;
+            padding: 50px;
+            color: white;
         }
-
-        window.onload = redirectToTelegramUser;
-    </script>
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            margin: auto;
+            color: black;
+        }
+    </style>
 </head>
-<body></body>
+<body>
+
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please wait while we redirect you...</p>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://t.me/SFAEarnings";
+        }, 3000); // 3 सेकंड बाद रीडायरेक्ट होगा
+    </script>
+
+</body>
 </html>
