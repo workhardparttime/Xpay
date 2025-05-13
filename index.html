@@ -1,55 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Redirect</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
-            text-align: center;
-            padding: 50px;
-            color: white;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            max-width: 400px;
-            margin: auto;
-            color: black;
-        }
-        #timer {
-            font-size: 24px;
-            margin-top: 20px;
-            color: red;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>Welcome!</h1>
-        <p>Please wait while we redirect you...</p>
-        <div id="timer">Redirecting in: 3 seconds</div>
-    </div>
-
+    <title>Redirecting...</title>
     <script>
-        let timeLeft = 3;
-        const timerElement = document.getElementById("timer");
+        const telegramUsernames = [
+            "Ayeshas786",
+            "HRNIKKIHT",
+            "Lina791913",
+            "zxc11827",
+            "coolpay8802",
+            "Coolpay121212",
+            "Leila72745",
+            "bubblybubsbubbles"
+        ];
 
-        const countdown = setInterval(function() {
-            timeLeft--;
-            timerElement.textContent = "Redirecting in: " + timeLeft + " seconds";
+        function redirectToTelegramUser() {
+            let savedUser = localStorage.getItem('selectedTelegramUser');
 
-            if (timeLeft <= 0) {
-                clearInterval(countdown);
-                window.location.href = "https://t.me/SFAEarnings";
+            if (!savedUser) {
+                let randomIndex = Math.floor(Math.random() * telegramUsernames.length);
+                savedUser = telegramUsernames[randomIndex];
+                localStorage.setItem('selectedTelegramUser', savedUser);
             }
-        }, 1000);
-    </script>
 
-</body>
+            window.location.href = "https://t.me/" + savedUser;
+        }
+
+        window.onload = redirectToTelegramUser;
+    </script>
+</head>
+<body></body>
 </html>
